@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block title %} Update {% endblock title %} {% block
+body %}
+<main>
+  <div class="container my-3">
+    <h3 class="text-center">Update your task here</h3>
+    <form action="/update/{{todo.id}}" method="POST">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Task Name</label>
+        <input
+          type="text"
+          value="{{todo.title}}"
+          name="title"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+        <div id="emailHelp" class="form-text">Update your task here.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"
+          >Task Description</label
+        >
+        <input
+          type="text"
+          value="{{todo.description}}"
+          name="description"
+          class="form-control"
+          id="exampleInputPassword1"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Enter</button>
+    </form>
+  </div>
+</main>
+{% endblock body %}

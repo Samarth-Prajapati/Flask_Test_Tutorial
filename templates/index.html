@@ -1,0 +1,78 @@
+{% extends 'base.html' %} {% block title %} Home {% endblock title %} {% block
+body %}
+<main>
+  <div class="container my-3">
+    <h3 class="text-center">Enter your task here</h3>
+    <form action="/" method="POST">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Task Name</label>
+        <input
+          type="text"
+          name="title"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+        <div id="emailHelp" class="form-text">Enter your task here.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"
+          >Task Description</label
+        >
+        <input
+          type="text"
+          name="description"
+          class="form-control"
+          id="exampleInputPassword1"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Enter</button>
+    </form>
+    <hr />
+  </div>
+  <div class="container my-3">
+    <h3 class="text-center my-3">Your Todo List</h3>
+    {% if todo|length==0 %}
+    <div class="alert alert-info text-center" role="alert">
+      No Record Found!
+    </div>
+    {% else %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Task Name</th>
+          <th scope="col">Task Description</th>
+          <th scope="col">Date</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for todos in todo %}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{todos.title}}</td>
+          <td>{{todos.description}}</td>
+          <td>{{todos.date_created}}</td>
+          <td>
+            <a
+              href="/update/{{todos.id}}"
+              type="button"
+              class="btn btn-primary btn-sm"
+              >Update</a
+            >
+            <a
+              href="/delete/{{todos.id}}"
+              type="button"
+              class="btn btn-danger btn-sm"
+              >Delete</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+  </div>
+</main>
+{% endblock body %}

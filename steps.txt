@@ -1,0 +1,22 @@
+Create virtual env -
+
+virtualenv venv 
+venv/scripts/activate
+
+Download dependencies -
+
+pip install flask
+pip install flask-sqlalchemy
+
+Write necessary code in app.py and create folders static and templates -
+
+app.py
+templates - index.html
+static
+
+Connect with sqlite - 
+
+Write necessary code and then to create a db_name.db file in instace , write this code 
+from app import app,db
+with app.app_context():
+    db.create_all()
